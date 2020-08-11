@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="css/templatemo-style.css">
+    <title>Welcome to Homepage</title>
+
+
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300,400italic,700' rel='stylesheet' type='text/css'>
+    <link href="css/admin/font-awesome.min.css" rel="stylesheet">
+    <link href="css/admin/bootstrap.min.css" rel="stylesheet">
+    <link href="css/admin/templatemo-style.css" rel="stylesheet">
+</head>
+<body>
+<div class="fixed-header">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/index">Yhy's Blog</a>
+        </div>
+        <nav class="main-menu">
+            <ul>
+                <li><a href="#">Home</a></li>
+                <li><a href="/index">Index</a></li>
+                <li><a href="/blogStart">Blogs</a></li>
+                <li><a href="">Categories</a></li>
+                <li><a href="/loginJump">Logout</a></li>
+                <li>Hello &nbsp;<span th:text="${session.user.username}"/>/li>
+            </ul>
+        </nav>
+    </div>
+</div>
+
+<div id="sidebar417">
+    <a href="#" class="aaa417">My Blogs</a><div class="space417"></div>
+    <a href="/settings" class="aaa417">User Settings</a><div class="space417"></div>
+</div>
+
+<div class="templatemo-content-container">
+    <div class="templatemo-content-widget no-padding">
+        <div class="panel panel-default table-responsive">
+            <table class="table table-striped table-bordered templatemo-user-table">
+                <thead>
+                <tr>
+                    <td><a href="" class="white-text templatemo-sort-by"># <span class="caret"></span></a></td>
+                    <td><a href="" class="white-text templatemo-sort-by">Article Name <span class="caret"></span></a></td>
+                    <td>Edit</td>
+                    <td>Action</td>
+                    <td>Delete</td>
+                </tr>
+                </thead>
+                <tbody>
+                <tr th:each="blog:${allblog}">
+                    <td th:text="${blog.id}"></td>
+                    <td th:text="${blog.article_name}"></td>
+                    <td><a th:href="@{/editBlog/}+${blog.id}" class="templatemo-edit-btn">Edit</a></td>
+                    <td><a href="" class="templatemo-link">Action</a></td>
+                    <td><a th:href="@{/deleteBlog/}+${blog.id}" class="templatemo-link">Delete</a></td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+</body>
+</html>

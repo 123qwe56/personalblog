@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="css/templatemo-style.css">
+    <title>Edit Your Blog</title>
+
+    <style type="text/css">
+        .myContainer {
+            margin-top: 300px;
+            margin-left: 200px;
+            width: 500px;
+        }
+
+        .title {
+            height: 100px;
+        }
+
+        .content{
+            height: 1000px;
+        }
+
+        #content {
+            height: 1000px;
+            width: 1200px;
+            background-color: #31b0d5;
+            margin-top: 30px;
+        }
+
+        #title {
+            height: 50px;
+            width: 1000px;
+            background-color: black;
+            color: white;
+        }
+
+        .mybtn{
+            margin-top: 10px;
+            margin-left: 1000px;
+            background-color: #6756ea;
+            height: 50px;
+            width: 100px;
+        }
+    </style>
+</head>
+<body>
+
+<div th:insert="navigation.html::topBar"></div>
+
+<div th:insert="sidebar.html::commonSideBar" style="position: absolute"></div>
+
+<div class="myContainer">
+    <form action="/editBlog" method="post">
+        <div class="title">
+            <input type="hidden" name="id" th:value="${blog.id}"/>
+            <textarea id="title" name="article_name" th:text="${blog.article_name}"></textarea>
+        </div>
+        <div class="content">
+            <textarea id="content" name="content" th:text="${blog.content}"></textarea>
+            <button type="submit"  class="mybtn">Edit</button>
+        </div>
+    </form>
+</div>
+
+<br><br><br><br><br><br>
+
+<div th:insert="end.html::end" class="footer"></div>
+
+
+
+<script src="js/jquery.min.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<script src="js/jquery.singlePageNav.min.js"></script>
+<script src="js/other.js"></script>
+</body>
+</html>
